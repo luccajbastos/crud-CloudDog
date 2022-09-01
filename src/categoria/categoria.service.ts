@@ -14,19 +14,29 @@ export class CategoriaService {
     return this.categoriaRepository.find();
   }
 
-  saveProduct(product: any) {
-    const productEntity = this.categoriaRepository.create(product);
-    return this.categoriaRepository.save(productEntity);
+  saveCategoria(categoria: any) {
+    const categoriaEntity = this.categoriaRepository.create(categoria);
+    return this.categoriaRepository.save(categoriaEntity);
   }
 
-  async getProductById(id: number) {
-    const product = await this.categoriaRepository.findOne({
+  async getCategoriaById(id: number) {
+    const categoria = await this.categoriaRepository.findOne({
       where: { id_categoria: id },
     });
-    if (!product) {
-      throw new NotFoundException('Produto não encontrado.');
+    if (!categoria) {
+      throw new NotFoundException('Categoria não encontrada');
     }
-    return product;
+    return categoria;
+  }
+
+  async getCategoriaByName(name: string) {
+    const categoria = await this.categoriaRepository.findOne({
+      where: { nome: name },
+    });
+    if (!categoria) {
+      throw new NotFoundException('Categoria não encontrada');
+    }
+    return categoria;
   }
 
   update(id: string, name: any) {

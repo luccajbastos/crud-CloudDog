@@ -2,12 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Generated,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity()
 class categoria {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   id_categoria: number;
 
   @Column()
